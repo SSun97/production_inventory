@@ -1,0 +1,27 @@
+{
+  "name": "inventory_tracking",
+  "version": "1.0.0",
+  "description": "This is a simple web application for tracking inventory in a logistic company",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "start:prod": "NODE_ENV=production nodemon server.js",
+    "debug": "ndb server.js",
+    "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js --public-url /js",
+    "build:js": "parcel build ./public/js/index.js --out-dir ./public/js --out-file bundle.js --public-url /js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SSun97/production_inventory.git"
+  },
+  "author": "Simon Sun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SSun97/production_inventory/issues"
+  },
+  "homepage": "https://github.com/SSun97/production_inventory#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}

@@ -16,19 +16,19 @@ const warehouseLocation = [
   'San Francisco',
   'Boston',
 ];
-
+// Get weather data function from openweathermap
 const getWeather = async (lat, lon) => {
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=2bfe5bf547d1711c4c173fce24a90b71`;
   const response = await axios.get(url);
   // console.log(response.data.weather);
   return response.data.weather;
 };
+// Create a report according to the json data
 exports.getReport = () =>
   catchAsync(async (req, res, next) => {
     const fields = ['name', 'quantity', 'description', 'city'];
     const opts = { fields };
     parseAsync(products, opts)
-      // .then((csv) => console.log(csv))
       .then(
         (csv) => {
           fs.writeFile(`${__dirname}/../public/reports/products.csv`, csv, {}, (err) => {});
@@ -37,7 +37,7 @@ exports.getReport = () =>
       .catch((err) => console.error(err));
     res.download(`${__dirname}/../public/reports/products.csv`);
   });
-
+// Get all products with weather information
 exports.getAll = () =>
   catchAsync(async (req, res, next) => {
     const productsWithWeather = await Promise.all(
@@ -55,6 +55,7 @@ exports.getAll = () =>
       },
     });
   });
+// Get a specific product with provided id
 exports.getOne = () =>
   catchAsync(async (req, res, next) => {
     const product = await products.find(
@@ -72,9 +73,10 @@ exports.getOne = () =>
       },
     });
   });
-
+// Create a new product
 exports.createOne = () =>
   catchAsync(async (req, res, next) => {
+  // Check if any requirted fields are missing
     if (
       !req.query.city ||
       !req.query.description ||
@@ -88,10 +90,12 @@ exports.createOne = () =>
         )
       );
     }
+    // Check if the city is valid
     if (!warehouseLocation.includes(req.query.city)) {
       return next(new AppError(`Please provide a valid city`, 400));
     }
     const productNames = products.map((product) => product.name);
+    // Check if the product name already exists
     if (productNames.includes(req.query.name)) {
       return next(
         new AppError(
@@ -100,9 +104,11 @@ exports.createOne = () =>
         )
       );
     }
+    // Check if the quantity is a number
     if (isNaN(req.query.quantity)) {
       return next(new AppError(`Please provide a valid quantity`, 400));
     }
+    // Create a new product object, push it to the products array and write it to the json file
     const newProduct = req.query;
     newProduct.id = Math.floor(Math.random() * 90000) + 10000;
     newProduct.slug = slug(newProduct.name, { lower: true });
@@ -124,8 +130,10 @@ exports.createOne = () =>
       },
     });
   });
+ // Update a product with provided id 
 exports.updateOne = () =>
   catchAsync(async (req, res, next) => {
+   // Need to at least provide one field to update 
     if (
       !req.query.city &&
       !req.query.description &&
@@ -139,10 +147,12 @@ exports.updateOne = () =>
         )
       );
     }
+    // If city exists, it needs to be a valid city
     if (req.query.city && !warehouseLocation.includes(req.query.city)) {
       return next(new AppError(`Please provide a valid city`, 400));
     }
     const productNames = products.map((product) => product.name);
+    // If name exists, it needs to be a valid name
     if (req.query.name && productNames.includes(req.query.name)) {
       return next(
         new AppError(
@@ -151,20 +161,24 @@ exports.updateOne = () =>
         )
       );
     }
+    // If quantity exists, it needs to be a number
     if (req.query.quantity && isNaN(req.query.quantity)) {
       return next(new AppError(`Please provide a valid quantity`, 400));
     }
     const product = await products.find(
       (product) => product.id === parseInt(req.params.id)
     );
+    // If the product does not exist, return an error
     if (!product) {
       return next(
         new AppError(`No product with the id of ${req.params.id}`, 404)
       );
     }
+    // Update the product with the new values
     Object.keys(req.query).forEach((key) => {
       product[key] = req.query[key];
     });
+    // Write the new products to the json file
     fs.writeFile(
       `${__dirname}/../data/products.json`,
       JSON.stringify(products),
@@ -182,20 +196,23 @@ exports.updateOne = () =>
       },
     });
   });
-
+// Delete a product with provided id
 exports.deleteOne = () =>
   catchAsync(async (req, res, next) => {
     const product = await products.find(
       (product) => product.id === parseInt(req.params.id)
     );
+    // If the product does not exist, return an error
     if (!product) {
       return next(
         new AppError(`No product with the id of ${req.params.id}`, 404)
       );
     }
+    // Remove the product from the products array
     products = products.filter(
       (product) => product.id !== parseInt(req.params.id)
     );
+    // Write the new products to the json file
     fs.writeFile(
       `${__dirname}/../data/products.json`,
       JSON.stringify(products),

@@ -29,11 +29,14 @@ exports.getReport = () =>
     const fields = ['name', 'quantity', 'description', 'city'];
     const opts = { fields };
     parseAsync(products, opts)
-      .then(
-        (csv) => {
-          fs.writeFile(`${__dirname}/../public/reports/products.csv`, csv, {}, (err) => {});
-        }
-      )
+      .then((csv) => {
+        fs.writeFile(
+          `${__dirname}/../public/reports/products.csv`,
+          csv,
+          {},
+          (err) => {}
+        );
+      })
       .catch((err) => console.error(err));
     res.download(`${__dirname}/../public/reports/products.csv`);
   });
@@ -76,7 +79,7 @@ exports.getOne = () =>
 // Create a new product
 exports.createOne = () =>
   catchAsync(async (req, res, next) => {
-  // Check if any requirted fields are missing
+    // Check if any requirted fields are missing
     if (
       !req.query.city ||
       !req.query.description ||
@@ -130,10 +133,10 @@ exports.createOne = () =>
       },
     });
   });
- // Update a product with provided id 
+// Update a product with provided id
 exports.updateOne = () =>
   catchAsync(async (req, res, next) => {
-   // Need to at least provide one field to update 
+    // Need to at least provide one field to update
     if (
       !req.query.city &&
       !req.query.description &&

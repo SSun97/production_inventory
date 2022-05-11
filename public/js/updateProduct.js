@@ -13,4 +13,4 @@ export const updateProduct = async (data) => {
   } catch (error) {
     // showAlert('error', error.response.data.message);
   }
-}
+};

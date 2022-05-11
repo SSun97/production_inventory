@@ -1,5 +1,10 @@
 const express = require('express');
-const { getOverview, getAddProductForm, getUpdateProductForm,deleteProduct } = require('../controllers/viewsController');
+const {
+  getOverview,
+  getAddProductForm,
+  getUpdateProductForm,
+  deleteProduct,
+} = require('../controllers/viewsController');
 const router = express.Router();
 // create route
 router.route('/').get(getOverview);

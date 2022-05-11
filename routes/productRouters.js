@@ -3,7 +3,7 @@ const {
   getProduct,
   createProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
 } = require('../controllers/productController');
 const express = require('express');
 const router = express.Router();

@@ -12,4 +12,4 @@ export const addProduct = async (data) => {
   } catch (error) {
     // showAlert('error', error.response.data.message);
   }
-}
+};

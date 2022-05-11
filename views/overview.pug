@@ -1,0 +1,26 @@
+extends base
+
+block content
+    main.main
+        .div-container
+            .div-addProduct
+                    a.a-addProduct(href='/addProduct')
+                        span Add Product
+            each product in products.data
+                .div-product
+                    h2.product-name
+                        span= `${product.name}`
+                    h2.product-name 
+                        span= `Qty: ${product.quantity}`
+                    h2.product-name
+                        span= `Location: ${product.city}`
+                    h2.product-weather 
+                        span= `${product.weather[0].description}`
+                    img.weather-img(src=`http://openweathermap.org/img/wn/${product.weather[0].icon}@2x.png`, alt="weather icon")
+                    button.btn-update
+                        span Update
+                    button.btn-delete(onclick=`deleteProduct(${product.id})`)
+                        span Delete
+                    
+
+

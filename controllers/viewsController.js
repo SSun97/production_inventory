@@ -15,7 +15,7 @@ exports.getOverview = catchAsync(async (req, res, next) => {
   const products = await getProducts();
   // console.log(products.data[0]);
   res.status(200).render('overview', {
-    title: 'All tours',
+    title: 'All productss',
     products,
   });
 });
@@ -24,22 +24,25 @@ exports.getAddProductForm = (req, res) => {
     title: 'Add New Product',
   });
 };
-exports.getUpdateProductForm = (req, res) => {
-  res.status(200).render('addProduct', {
-    title: 'Update Product',
-  });
-};
-// exports.getUpdateProductForm = catchAsync(async (req, res, next) => {
-//   // 1) Get the data, for the requested tour (including reviews and guides)
-//   const product = await products.findOne({ slug: req.params.slug });
-//   if (!product) {
-//     return next(new AppError('There is no tour with that name.', 404));
-//   }
-//   res.status(200).render('updateProduct', {
-//     title: `update ${product.name}`,
-//     product,
+// exports.getUpdateProductForm = (req, res) => {
+//   res.status(200).render('addProduct', {
+//     title: 'Update Product',
 //   });
-// });
+// };
+exports.getUpdateProductForm = catchAsync(async (req, res, next) => {
+  const data = await getProducts();
+  const products = data.data
+  // console.log(products);
+  const product = await products.find((product) => product.slug === req.params.slug);
+  console.log(product);
+  if (!product) {
+    return next(new AppError('There is no tour with that name.', 404));
+  }
+  res.status(200).render('updateProduct', {
+    title: `update ${product.name}`,
+    product,
+  });
+});
 
 exports.deleteProduct = catchAsync(async (req, res) => {
     const url = `http://localhost:3000/api/products/${req.params.id}`;

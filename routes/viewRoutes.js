@@ -5,5 +5,5 @@ const router = express.Router();
 router.route('/').get(getOverview);
 router.get('/addProduct', getAddProductForm);
 router.get('/deleteProduct/:id', deleteProduct);
-router.get('/updateProduct', getAddProductForm);
+router.get('/updateProduct/:slug', getUpdateProductForm);
 module.exports = router;

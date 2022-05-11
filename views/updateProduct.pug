@@ -2,11 +2,13 @@ extends base
 
 block content 
   main.main
-    .addProduct-form
-      h2.heading-addProduct Update Product
+    .updateProduct-form
+      h2.heading-updateProduct Update Product
       a(href="/") Back to Home Page
-      form.form-addProduct
+      form.form-updateProduct
         .form__group
+          label.form__label(for='text') Product ID
+          input#product_id_1.form__input(type='number', value=`${product.id}`, readonly, required)
           label.form__label(for='text') Name
           input#product_name.form__input(type='text', value=`${product.name}`, placeholder='Quantity of product',required)
         .form__group
@@ -14,8 +16,8 @@ block content
           input#product_qty.form__input(type='number', value=`${product.quantity}`, placeholder='Quantity of product', required)
         .form__group
           label.form__label(for='text') Location
-          select#product_city.form__input(required)
-            option.option-location.select__default(value=`${product.city}`) Please select a location
+          select#product_city.form__input(required value=`${product.city}`)
+            //- option.option-location.select__default(value=`${product.city}`)
             option.option-location(value="New York") New York 
             option.option-location(value="San Francisco") San Francisco
             option.option-location(value="Los Angeles") Los Angeles

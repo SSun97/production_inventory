@@ -1,5 +1,6 @@
 import '@babel/polyfill';
-import { addProduct, updateProduct } from './addProduct';
+import { addProduct } from './addProduct';
+import {updateProduct} from './updateProduct';
 
 const addProductForm = document.querySelector('.form-addProduct');
 if (addProductForm) addProductForm.addEventListener('submit', (e) => {
@@ -17,14 +18,16 @@ if (addProductForm) addProductForm.addEventListener('submit', (e) => {
 });
 
 const updateProductForm = document.querySelector('.form-updateProduct');
-if (updateProductForm) addProductForm.addEventListener('submit', (e) => {
+if (updateProductForm) updateProductForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const form = {};
   form.name = document.getElementById('product_name').value;
   form.quantity = document.getElementById('product_qty').value;
   form.city = document.getElementById('product_city').value;
   form.description = document.getElementById('product_des').value;
-  console.log(form);
+  form.id = document.getElementById('product_id_1').value;
+  // form.id = document.getElementById('product_id').value;
+  // console.log(`This is form ${form}`);
   updateProduct(form);
 });
 

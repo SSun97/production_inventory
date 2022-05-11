@@ -17,9 +17,9 @@ block content
                     h2.product-weather 
                         span= `${product.weather[0].description}`
                     img.weather-img(src=`http://openweathermap.org/img/wn/${product.weather[0].icon}@2x.png`, alt="weather icon")
-                    button.btn-update
+                    a.btn-update(id=`btn--update` type="button" href=`http://localhost:3000/updateProduct/${product.slug}`)
                         span Update
-                    button.btn-delete(onclick=`deleteProduct(${product.id})`)
+                    a.btn-delete(id=`btn--delete` type="button" href=`http://localhost:3000/deleteProduct/${product.id}`)
                         span Delete
                     
 

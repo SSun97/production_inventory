@@ -169,17 +169,6 @@ exports.updateOne = () =>
     if (req.query.city && !warehouseLocation.includes(req.query.city)) {
       return next(new AppError(`Please provide a valid city`, 400));
     }
-    // const productNames = products.map((product) => product.name);
-    // // If name exists, it needs to be a valid name
-    // if (req.query.name && productNames.includes(req.query.name)) {
-    //   return next(
-    //     new AppError(
-    //       `Product with the name ${req.query.name} already exists`,
-    //       400
-    //     )
-    //   );
-    // }
-    // If quantity exists, it needs to be a number
     if (req.query.quantity && isNaN(req.query.quantity)) {
       return next(new AppError(`Please provide a valid quantity`, 400));
     }

@@ -19,10 +19,10 @@ block content
                         span= `Location: ${product.city}`
                     h2.product-weather 
                         span= `${product.weather[0].description}`
-                    img.weather-img(src=`http://openweathermap.org/img/wn/${product.weather[0].icon}@2x.png`, alt="weather icon")
-                    a.btn-update(id=`btn--update` type="button" href=`http://localhost:3000/updateProduct/${product.slug}`)
+                    img.weather-img(src=`https://openweathermap.org/img/wn/${product.weather[0].icon}@2x.png`, alt="weather icon")
+                    a.btn-update(id=`btn--update` type="button" href=`/updateProduct/${product.slug}`)
                         span Update
-                    a.btn-delete(id=`btn--delete` type="button" href=`http://localhost:3000/deleteProduct/${product.id}`)
+                    a.btn-delete(id=`btn--delete` type="button" href=`/deleteProduct/${product.id}`)
                         span Delete
                     
 

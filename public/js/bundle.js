@@ -11409,17 +11409,18 @@ var addProduct = /*#__PURE__*/function () {
             res = _context.sent;
 
             if (res.data.status === 'success') {
-              (0, _alert.showAlert)('success', "".concat(type.toUpperCase(), " created successfully"));
+              (0, _alert.showAlert)('success', "".concat(data.name, " created successfully"));
             }
 
-            _context.next = 10;
+            _context.next = 11;
             break;
 
           case 8:
             _context.prev = 8;
             _context.t0 = _context["catch"](0);
+            (0, _alert.showAlert)('error', "Something went wrong, ".concat(data.name, " may already exist"));
 
-          case 10:
+          case 11:
           case "end":
             return _context.stop();
         }
@@ -11731,17 +11732,18 @@ var updateProduct = /*#__PURE__*/function () {
             res = _context.sent;
 
             if (res.data.status === 'success') {
-              (0, _alert.showAlert)('success', "".concat(type.toUpperCase(), " updated successfully"));
+              (0, _alert.showAlert)('success', "".concat(data.name, " updated successfully"));
             }
 
-            _context.next = 10;
+            _context.next = 11;
             break;
 
           case 8:
             _context.prev = 8;
             _context.t0 = _context["catch"](0);
+            (0, _alert.showAlert)('error', "Something went wrong");
 
-          case 10:
+          case 11:
           case "end":
             return _context.stop();
         }
@@ -12085,7 +12087,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63620" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57640" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

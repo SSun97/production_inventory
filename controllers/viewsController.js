@@ -24,11 +24,7 @@ exports.getAddProductForm = (req, res) => {
     title: 'Add New Product',
   });
 };
-// exports.getUpdateProductForm = (req, res) => {
-//   res.status(200).render('addProduct', {
-//     title: 'Update Product',
-//   });
-// };
+
 exports.getUpdateProductForm = catchAsync(async (req, res, next) => {
   const data = await getProducts();
   const products = data.data;

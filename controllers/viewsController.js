@@ -32,11 +32,9 @@ exports.getAddProductForm = (req, res) => {
 exports.getUpdateProductForm = catchAsync(async (req, res, next) => {
   const data = await getProducts();
   const products = data.data;
-  // console.log(products);
   const product = await products.find(
     (product) => product.slug === req.params.slug
   );
-  console.log(product);
   if (!product) {
     return next(new AppError('There is no tour with that name.', 404));
   }
@@ -49,9 +47,6 @@ exports.getUpdateProductForm = catchAsync(async (req, res, next) => {
 exports.deleteProduct = catchAsync(async (req, res) => {
   const url = `http://localhost:3000/api/products/${req.params.id}`;
   await axios.delete(url);
-  // if (res.data.status === 'success') {
-  //   showAlert('success', `${type.toUpperCase()} updated successfully`);
-  // }
   setTimeout(() => {}, 1000);
   res.redirect('/');
 });

@@ -2,27 +2,25 @@ extends base
 
 block content 
   main.main
-    .addProduct-form
-      h2.heading-addProduct Add New Product
-      a(href="/") Back to Home Page
-      form.form-addProduct
-        .form__group
-          label.form__label(for='text') Name
-          input#product_name.form__input(type='text', placeholder='Name of product', required)
-        .form__group
-          label.form__label(for='number') Quantity
-          input#product_qty.form__input(type='number', placeholder='Quantity of product', required)
-        .form__group
-          label.form__label(for='text') Location
-          select#product_city.form__input(required)
-            option.option-location.select__default(value="") Please select a location
-            option.option-location(value="New York") New York 
-            option.option-location(value="San Francisco") San Francisco
-            option.option-location(value="Los Angeles") Los Angeles
-            option.option-location(value="Chicago") Chicago
-            option.option-location(value="Boston") Boston
-        .form__group
-          label.form__label(for='text') Description
-          input#product_des.form__input(type='text', placeholder='Description', required)
-        .form__group
-          button.btn.btn--green Add Product
+    .div-container
+    a.back-homepage.button-68(href="/") Back to Home Page
+    .form-style-10 
+      h1 Add New Product
+        form.form-addProduct.form
+          .form__group.inner-wrap
+            label.form__label(for='text') Name
+            input#product_name.form__input(type='text', placeholder='Name of product', required)
+            label.form__label(for='number') Quantity
+            input#product_qty.form__input(type='number', placeholder='Quantity of product', required)
+            label.form__label(for='text') Location
+            select#product_city.form__input(required)
+              option.option-location.select__default(value="") Please select a location
+              option.option-location(value="New York") New York 
+              option.option-location(value="San Francisco") San Francisco
+              option.option-location(value="Los Angeles") Los Angeles
+              option.option-location(value="Chicago") Chicago
+              option.option-location(value="Boston") Boston
+            label.form__label(for='text') Description
+            input#product_des.form__input(type='text', placeholder='Description', required)
+          .form__group
+            button.btn.btn--green.button-68 Add Product

@@ -2,29 +2,27 @@ extends base
 
 block content 
   main.main
-    .updateProduct-form
-      h2.heading-updateProduct Update Product
-      a(href="/") Back to Home Page
-      form.form-updateProduct
-        .form__group
-          label.form__label(for='text') Product ID
-          input#product_id_1.form__input(type='number', value=`${product.id}`, readonly, required)
-          label.form__label(for='text') Name
-          input#product_name.form__input(type='text', value=`${product.name}`, placeholder='Quantity of product',required)
-        .form__group
-          label.form__label(for='number') Quantity
-          input#product_qty.form__input(type='number', value=`${product.quantity}`, placeholder='Quantity of product', required)
-        .form__group
-          label.form__label(for='text') Location
-          select#product_city.form__input(required value=`${product.city}`)
-            //- option.option-location.select__default(value=`${product.city}`)
-            option.option-location(value="New York") New York 
-            option.option-location(value="San Francisco") San Francisco
-            option.option-location(value="Los Angeles") Los Angeles
-            option.option-location(value="Chicago") Chicago
-            option.option-location(value="Boston") Boston
-        .form__group
-          label.form__label(for='text') Description
-          input#product_des.form__input(type='text', value=`${product.description}`,placeholder='Description', required)
-        .form__group
-          button.btn.btn--green Update Product
+    .div-container
+      a.back-homepage.button-68(href="/") Back to Home Page
+    .form-style-10  
+      h1 Update Product
+        form.form-updateProduct.form
+          .form__group.inner-wrap
+            label.form__label(for='text') Product ID (read only)
+            input#product_id_1.form__input(type='number', value=`${product.id}`, readonly, required)
+            label.form__label(for='text') Name
+            input#product_name.form__input(type='text', value=`${product.name}`, placeholder='Quantity of product',required)
+            label.form__label(for='number') Quantity
+            input#product_qty.form__input(type='number', value=`${product.quantity}`, placeholder='Quantity of product', required)
+            label.form__label(for='text') Location
+            select#product_city.form__input(required value=`${product.city}`)
+              //- option.option-location.select__default(value=`${product.city}`)
+              option.option-location(value="New York") New York 
+              option.option-location(value="San Francisco") San Francisco
+              option.option-location(value="Los Angeles") Los Angeles
+              option.option-location(value="Chicago") Chicago
+              option.option-location(value="Boston") Boston
+            label.form__label(for='text') Description
+            input#product_des.form__input(type='text', value=`${product.description}`,placeholder='Description', required)
+          .form__group
+            button.btn.btn--green.button-68 Update Product

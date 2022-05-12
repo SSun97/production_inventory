@@ -4,11 +4,10 @@ block content
     main.main
         .div-container
             .div-addProduct
-                    a.a-addProduct(href='/addProduct')
-                        span Add Product
-            .div-addProduct
-                    a.a-downloadCSV(href='/api/create_report')
-                        span Download CSV
+                a.a-addProduct.button-68(href='/addProduct')
+                    span Add Product
+                a.a-downloadCSV.button-68(href='/api/create_report')
+                    span Download CSV
             each product in products.data
                 .div-product
                     h2.product-name
@@ -20,9 +19,9 @@ block content
                     h2.product-weather 
                         span= `${product.weather[0].description}`
                     img.weather-img(src=`https://openweathermap.org/img/wn/${product.weather[0].icon}@2x.png`, alt="weather icon")
-                    a.btn-update(id=`btn--update` type="button" href=`/updateProduct/${product.slug}`)
+                    a.btn-update.button-68(id=`btn--update` type="button" href=`/updateProduct/${product.slug}`)
                         span Update
-                    a.btn-delete(id=`btn--delete` type="button" href=`/deleteProduct/${product.id}`)
+                    a.btn-delete.button-68(id=`btn--delete` type="button" href=`/deleteProduct/${product.id}`)
                         span Delete
                     
 

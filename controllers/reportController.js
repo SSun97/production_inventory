@@ -1,3 +1,4 @@
 const factory = require('./handlerFactroy');
 
-exports.getReportCSV = factory.getReport();
+exports.createReportCSV = factory.createReport();
+exports.downloadReport = factory.downloadReport();

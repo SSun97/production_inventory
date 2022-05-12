@@ -6,6 +6,9 @@ block content
             .div-addProduct
                     a.a-addProduct(href='/addProduct')
                         span Add Product
+            .div-addProduct
+                    a.a-downloadCSV(href='/api/create_report')
+                        span Download CSV
             each product in products.data
                 .div-product
                     h2.product-name

@@ -16,6 +16,14 @@ const warehouseLocation = [
   'San Francisco',
   'Boston',
 ];
+const getToday = () => {
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+  today = mm + '-' + dd + '-' + yyyy;
+  return today;
+}
 // Get weather data function from openweathermap
 const getWeather = async (lat, lon) => {
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=2bfe5bf547d1711c4c173fce24a90b71`;
@@ -24,22 +32,29 @@ const getWeather = async (lat, lon) => {
   return response.data.weather;
 };
 // Create a report according to the json data
-exports.getReport = () =>
+exports.createReport = () =>
   catchAsync(async (req, res, next) => {
     const fields = ['name', 'quantity', 'description', 'city'];
     const opts = { fields };
+    const today = getToday();
+
+    // fs.unlinkSync(`${__dirname}/../public/reports/Inventory-${today}.csv`);
     parseAsync(products, opts)
       .then((csv) => {
         fs.writeFile(
-          `${__dirname}/../public/reports/products.csv`,
+          `${__dirname}/../public/reports/Inventory-${today}.csv`,
           csv,
           {},
           (err) => {}
         );
-      })
-      .catch((err) => console.error(err));
-    res.download(`${__dirname}/../public/reports/products.csv`);
+      }).catch((err) => console.error(err));
+      next();
+    // await res.download(`${__dirname}/../public/reports/Inventory-${today}.csv`);
   });
+exports.downloadReport = () => catchAsync(async (req, res, next) => {
+  const today = getToday();
+  res.redirect(`/reports/Inventory-${today}.csv`);
+});
 // Get all products with weather information
 exports.getAll = () =>
   catchAsync(async (req, res, next) => {

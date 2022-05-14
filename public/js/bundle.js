@@ -11735,21 +11735,20 @@ var updateProduct = /*#__PURE__*/function () {
               (0, _alert.showAlert)('success', "".concat(data.name, " updated successfully"));
             }
 
-            console.log(data);
-            _context.next = 12;
+            _context.next = 11;
             break;
 
-          case 9:
-            _context.prev = 9;
+          case 8:
+            _context.prev = 8;
             _context.t0 = _context["catch"](0);
-            (0, _alert.showAlert)('error', "Something went wrong");
+            (0, _alert.showAlert)('error', "Something went wrong. ".concat(_context.t0.response.data.message));
 
-          case 12:
+          case 11:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 9]]);
+    }, _callee, null, [[0, 8]]);
   }));
 
   return function updateProduct(_x) {

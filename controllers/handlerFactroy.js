@@ -179,6 +179,7 @@ exports.updateOne = () =>
     const product = await products.find(
       (product) => product.id === parseInt(req.params.id)
     );
+    const otherProducts = products.filter(el => el.id !== parseInt(req.params.id));
     // If the product does not exist, return an error
     if (!product) {
       return next(
@@ -192,6 +193,14 @@ exports.updateOne = () =>
       }
       if (req.query.description) {
         req.query.description = req.query.description.trim();
+      }
+      const otherProductNames = otherProducts.map((product) => product.name);
+      // Check if the product name already exists
+      if (otherProductNames.includes(req.query.name)) {
+        res.status(400).json({
+          status: 'error',
+          message: `Product with the name ${req.query.name} already exists`,
+        });
       }
       product[key] = req.query[key];
     });

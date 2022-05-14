@@ -20,7 +20,7 @@ block content
                         span= `${product.weather[0].description}`
                     img.weather-img(src=`https://openweathermap.org/img/wn/${product.weather[0].icon}@2x.png`, alt="weather icon")
                     a.btn-update.button-68(id=`btn--update` type="button" href=`/updateProduct/${product.slug}`)
-                        span Update
+                        span Update/View
                     a.btn-delete.button-68(id=`btn--delete` type="button" href=`/deleteProduct/${product.id}`)
                         span Delete
 

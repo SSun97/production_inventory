@@ -5,8 +5,6 @@ const axios = require('axios');
 const getProducts = async () => {
   const url = `http://localhost:3000/api/products/`;
   const response = await axios.get(url);
-  // console.log(response.data.weather);
-  // console.log(typeof(response.data));
   return response.data.data;
 };
 

@@ -129,6 +129,9 @@ exports.createOne = () =>
     }
     // Create a new product object, push it to the products array and write it to the json file
     const newProduct = req.query;
+    newProduct.name = newProduct.name.trim();
+    newProduct.description = newProduct.description.trim();
+    // console.log(newProduct);
     newProduct.id = Math.floor(Math.random() * 90000) + 10000;
     newProduct.slug = slug(newProduct.name, { lower: true });
     products.push(newProduct);
@@ -184,6 +187,12 @@ exports.updateOne = () =>
     }
     // Update the product with the new values
     Object.keys(req.query).forEach((key) => {
+      if (req.query.name) {
+        req.query.name = req.query.name.trim();
+      }
+      if (req.query.description) {
+        req.query.description = req.query.description.trim();
+      }
       product[key] = req.query[key];
     });
     // Write the new products to the json file

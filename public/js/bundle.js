@@ -11735,20 +11735,21 @@ var updateProduct = /*#__PURE__*/function () {
               (0, _alert.showAlert)('success', "".concat(data.name, " updated successfully"));
             }
 
-            _context.next = 11;
+            console.log(data);
+            _context.next = 12;
             break;
 
-          case 8:
-            _context.prev = 8;
+          case 9:
+            _context.prev = 9;
             _context.t0 = _context["catch"](0);
             (0, _alert.showAlert)('error', "Something went wrong");
 
-          case 11:
+          case 12:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 8]]);
+    }, _callee, null, [[0, 9]]);
   }));
 
   return function updateProduct(_x) {
@@ -12087,7 +12088,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57640" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64588" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

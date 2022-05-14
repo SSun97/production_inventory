@@ -9,6 +9,7 @@ export const updateProduct = async (data) => {
     if (res.data.status === 'success') {
       showAlert('success', `${data.name} updated successfully`);
     }
+    console.log(data);
   } catch (error) {
     showAlert('error', `Something went wrong`);
   }

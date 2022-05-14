@@ -53,6 +53,7 @@ exports.createReport = () =>
   });
 exports.downloadReport = () => catchAsync(async (req, res, next) => {
   const today = getToday();
+  await new Promise(res => setTimeout(res, 1000));
   res.redirect(`/reports/Inventory-${today}.csv`);
 });
 // Get all products with weather information

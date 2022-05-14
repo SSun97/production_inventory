@@ -23,6 +23,8 @@ block content
               option.option-location(value="Chicago") Chicago
               option.option-location(value="Boston") Boston
             label.form__label(for='text') Description
-            input#product_des.form__input(type='text', value=`${product.description}`,placeholder='Description', required)
+            textarea#product_des.form__input(rows="5", placeholder='Description', required) 
+              = `${product.description}`
+            //- input#product_des.form__input(type='text', placeholder='Description', required)
           .form__group
             button.btn.btn--green.button-68 Update Product

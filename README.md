@@ -1,5 +1,5 @@
 # production_inventory
-## Project Achievement:
+## Project Achievements:
 Basic CRUD Functionality
 - Create inventory items
 - Edit Them

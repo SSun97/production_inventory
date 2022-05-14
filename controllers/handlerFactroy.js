@@ -16,6 +16,7 @@ const warehouseLocation = [
   'San Francisco',
   'Boston',
 ];
+// get the string of Today for creating csv file
 const getToday = () => {
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
@@ -51,6 +52,7 @@ exports.createReport = () =>
       next();
     // await res.download(`${__dirname}/../public/reports/Inventory-${today}.csv`);
   });
+// Function of downloading report
 exports.downloadReport = () => catchAsync(async (req, res, next) => {
   const today = getToday();
   await new Promise(res => setTimeout(res, 1000));

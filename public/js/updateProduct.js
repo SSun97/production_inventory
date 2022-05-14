@@ -10,6 +10,6 @@ export const updateProduct = async (data) => {
       showAlert('success', `${data.name} updated successfully`);
     }
   } catch (error) {
-    showAlert('error', `Something went wrong. ${error.response.data.message}`);
+    showAlert('error', `Something went wrong. The product with the same name already exists`);
   }
 };

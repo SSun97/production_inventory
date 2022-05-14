@@ -11741,7 +11741,7 @@ var updateProduct = /*#__PURE__*/function () {
           case 8:
             _context.prev = 8;
             _context.t0 = _context["catch"](0);
-            (0, _alert.showAlert)('error', "Something went wrong. ".concat(_context.t0.response.data.message));
+            (0, _alert.showAlert)('error', "Something went wrong. The product with the same name already exists");
 
           case 11:
           case "end":

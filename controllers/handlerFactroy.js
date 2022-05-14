@@ -187,21 +187,24 @@ exports.updateOne = () =>
       );
     }
     // Update the product with the new values
+    if (req.query.name) {
+      req.query.name = req.query.name.trim();
+    }
+    if (req.query.description) {
+      req.query.description = req.query.description.trim();
+    }
+    const otherProductNames = otherProducts.map((product) => product.name);
+    if (otherProductNames.includes(req.query.name)) {
+      return next(new AppError(`Product with the name ${req.query.name} already exists`, 400));
+      // res.status(400).json({
+      //   status: 'error',
+      //   message: `Product with the name ${req.query.name} already exists`,
+      // });
+    }
     Object.keys(req.query).forEach((key) => {
-      if (req.query.name) {
-        req.query.name = req.query.name.trim();
-      }
-      if (req.query.description) {
-        req.query.description = req.query.description.trim();
-      }
-      const otherProductNames = otherProducts.map((product) => product.name);
+
       // Check if the product name already exists
-      if (otherProductNames.includes(req.query.name)) {
-        res.status(400).json({
-          status: 'error',
-          message: `Product with the name ${req.query.name} already exists`,
-        });
-      }
+
       product[key] = req.query[key];
     });
     // Write the new products to the json file

@@ -20,20 +20,24 @@ Additional function
 1. Install node.js https://nodejs.org/en/
 ```
 $ node -v
+
+(output)
 v16.14.0
 ```
 2. clone the repository to a local drive
 ```
 $ git clone https://github.com/SSun97/production_inventory.git
 ```
-3. Go to repository folder and install dependencies, run the commands below
+3. Go to the repository folder and install dependencies, run the commands below
 ```
 $ cd production_inventory
 $ npm install
 ```
-4. Make sure port 3000 on the local machine is avilable (example below showings port 3000 is occupied, need to terminate the Process ID (PID) 70695 before moving on)
+4. Make sure port 3000 on the local machine is available (the example below showings port 3000 is occupied, need to terminate the Process ID (PID) 70695 before moving on)
 ```
 $ lsof -i :3000 -S
+
+(output)
 COMMAND   PID USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
 node    70695 ssun   24u  IPv6 0x91300bb1a86b6d7d      0t0  TCP *:hbci (LISTEN)
 ```
@@ -41,6 +45,7 @@ node    70695 ssun   24u  IPv6 0x91300bb1a86b6d7d      0t0  TCP *:hbci (LISTEN)
 ```
 $ npm start
 
+(output)
 > inventory_tracking@1.0.0 start
 > node server.js
 Server is running on port 3000
@@ -61,5 +66,5 @@ Server is running on port 3000
 - Add a confirmation modal for deleting the item.
 - Use front-end framework instead of Pug Template package to create front-end pages since Pug generates the HTML code from the server-side. When the I/O volume is high, the burden on the back-end API server will be high.
 
-## Auther
+## Author
 Simon Sun: sunmingyu.97@gmail.com
